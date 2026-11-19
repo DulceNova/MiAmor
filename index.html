@@ -208,7 +208,7 @@ p{margin:0}button,input{font:inherit;color:inherit}
   function swap(n){
     scr[cur].classList.remove('on');clearInterval(amb);run++;cur=n;scr[n].classList.add('on');
     dots.forEach(function(d,i){d.classList.toggle('d',i<=n)});
-    if(n===1){sizeWeb();enter1()} if(n===2)enter2(); if(n===4)boom();
+    if(n===1){sizeWeb();enter1()} if(n===2){resetDexter();enter2()} if(n===3)resetTips(); if(n===4)boom();
   }
   function go(n){
     if(busy||n===cur)return;
@@ -282,6 +282,13 @@ p{margin:0}button,input{font:inherit;color:inherit}
     else{nt.hidden=true;$('#toEnd').hidden=false}});
 
   $('#mean').addEventListener('click',function(){this.hidden=true;$('#reveal').hidden=false;vib(40)});
+
+  function resetDexter(){
+    flipped=0;all('.card').forEach(function(c){c.setAttribute('aria-pressed','false');c.classList.remove('ok','mid','bad')});
+    $('#stamp').classList.remove('slam');var m=$('#mean');m.hidden=true;m.classList.remove('pulse');$('#reveal').hidden=true}
+  function resetTips(){
+    ti=0;res=0;showRes();tipT.textContent='Pulsa el botón para ver el primer consejo.';tipD.textContent='';tipD.className='';
+    $('#ico').innerHTML='';nt.textContent='Ver consejo';nt.hidden=false;$('#toEnd').hidden=true}
 
   /* Fuegos artificiales */
   var fx=$('#fx'),fc=fx.getContext('2d'),ps=[],fr=0,until=0;
